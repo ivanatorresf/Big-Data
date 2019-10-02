@@ -1,2 +1,1 @@
 # Big-Data
-Class Session
