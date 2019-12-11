@@ -2,43 +2,55 @@
 ### En esta Unidad se trabajo con dos algoritmos, K-Means y Regresion Logistica.
 #### K-Means
 #### Regresion Logistica
+
+* Start a Spark Session
+
 ```scala
-// Start a Spark Session
 import org.apache.spark.sql.SparkSession
 ```
+
+* Optional: Use the following code below to set the Error reporting
 ```scala
-// Optional: Use the following code below to set the Error reporting
 import org.apache.log4j._
 Logger.getLogger("org").setLevel(Level.ERROR)
 ```
+
+ * Spark Session 
 ```scala
-// Spark Session
 val spark = SparkSession.builder().getOrCreate()
 ```
+
+* Import clustering Algorithm
 ```scala
-// Import clustering Algorithm
 import org.apache.spark.ml.clustering.KMeans
 ```
+
+* Loads data
 ```scala
-// Loads data.
 val dataset = spark.read.format("libsvm").load("sample_kmeans_data.txt")
-// val dataset = spark.read.option("header","true").option("inferSchema","true").csv("sample_kmeans_data.txt")
+val dataset = spark.read.option("header","true").option("inferSchema","true").csv("sample_kmeans_data.txt")
 ```
+
+* Trains a k-means model.
 ```scala
-// Trains a k-means model.
 val kmeans = new KMeans().setK(2).setSeed(1L)
 val model = kmeans.fit(dataset)
 ```
+
+* Evaluate clustering by computing Within Set Sum of Squared Errors.
 ```scala
-// Evaluate clustering by computing Within Set Sum of Squared Errors.
 val WSSSE = model.computeCost(dataset)
 println(s"Within Set Sum of Squared Errors = $WSSSE")
 ```
+
+* Shows the result.
 ```scala
-// Shows the result.
 println("Cluster Centers: ")
 model.clusterCenters.foreach(println)
 ```
+
+
+#### Regresion Logistica
 ```scala
 //Importe una  SparkSession con la libreria Logistic Regression
 //Optional: Utilizar el codigo de  Error reporting
@@ -46,6 +58,8 @@ model.clusterCenters.foreach(println)
 //Utilice Spark para leer el archivo csv Advertising.
 //Imprima el Schema del DataFrame
 //importar librerias de spark y metodos de clasificacionn de logistic regression
+
+
 import org.apache.spark.ml.classification.LogisticRegression
 import org.apache.spark.sql.SparkSession
 ```
