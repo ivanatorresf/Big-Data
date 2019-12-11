@@ -85,7 +85,7 @@ val data  = spark.read.option("header","true").option("inferSchema", "true").for
 data.printSchema()
 ```
 
-* Despliegue los datos
+#### Despliegue los datos
 * Imprima un renglon de ejemplo 
 * Imprime el head del dataframe
 
@@ -110,7 +110,7 @@ for(ind <- Range(1, colnames.length)){
 }
 
 ```
-* Preparar el DataFrame para Machine Learning
+#### Preparar el DataFrame para Machine Learning
 * Hacer lo siguiente:
 * Renombre la columna "Clicked on Ad" a "label"
 * Tome la siguientes columnas como features "Daily Time Spent on Site","Age","Area Income","Daily Internet Usage","Timestamp","Male"
@@ -138,7 +138,7 @@ val assembler = (new VectorAssembler()
 ```scala
 val Array(training, test) = logregdata.randomSplit(Array(0.7, 0.3), seed = 12345)
 ```
-* Configure un Pipeline
+#### Configure un Pipeline
 * Importe  Pipeline
 * Tome los Resultados en el conjuto Test con transform
 ```scala
@@ -159,7 +159,7 @@ val model = pipeline.fit(training)
 ```scala
 val results = model.transform(test)
 ```
-* Evaluacion del modelo
+#### Evaluacion del modelo
 * Para Metrics y Evaluation importe MulticlassMetrics
 * Inicialice un objeto MulticlassMetrics 
 * Imprima la  Confusion matrix
