@@ -50,7 +50,7 @@ model.clusterCenters.foreach(println)
 ```
 
 
-#### Regresion Logistica
+### Regresion Logistica
 
 * Importe una  SparkSession con la libreria Logistic Regression
 * Optional: Utilizar el codigo de  Error reporting
@@ -64,13 +64,13 @@ import org.apache.spark.ml.classification.LogisticRegression
 import org.apache.spark.sql.SparkSession
 ```
 
-* declaramos funcion para reportar errores
+* Declaramos funcion para reportar errores
 ```scala
 import org.apache.log4j._
 Logger.getLogger("org").setLevel(Level.ERROR)
 ```
 
-* iniciamos sesion de spark
+* Iniciamos sesion de spark
 ```scala
 val spark = SparkSession.builder().getOrCreate()
 ```
@@ -80,7 +80,7 @@ val spark = SparkSession.builder().getOrCreate()
 val data  = spark.read.option("header","true").option("inferSchema", "true").format("csv").load("advertising.csv")
 ```
 
-* imprimimos el esquema del dataframe 
+* Imprimimos el esquema del dataframe 
 ```scala
 data.printSchema()
 ```
@@ -118,7 +118,7 @@ for(ind <- Range(1, colnames.length)){
 ```scala
 val timedata = data.withColumn("Hour",hour(data("Timestamp")))
 ```
-*- Renombre la columna "Clicked on Ad" a "label"
+* Renombre la columna "Clicked on Ad" a "label"
 ```scala
 val logregdata = timedata.select(data("Clicked on Ad").as("label"), $"Daily Time Spent on Site", $"Age", $"Area Income", $"Daily Internet Usage", $"Hour", $"Male")
 ```
