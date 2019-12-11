@@ -49,5 +49,4 @@ val model = kmeans.fit(training_data)
 feature_data.printSchema()
 ```
 ### RESULTADOS
-![resultados](https://drive.google.com/open?id=1Isb4-xobPiH4xFDaHI2H1rshpsbG0eq9)
-![resultados](https://drive.google.com/drive/u/1/folders/102GimQDXkTENN-y8-C2jKbH_CchcciPj)
+![resultados](https://github.com/ivanatorresf/Big-Data/blob/unidad_3/imagen.md/Captura%20de%20pantalla%20de%202019-12-11%2001-29-51.png)
